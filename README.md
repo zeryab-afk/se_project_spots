@@ -1,21 +1,29 @@
-# Project 3: Spots
+# SPOTS - Discover & Share Beautiful Locations 🌍
 
-### Overview  
+[![GitHub Pages Deployment](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-brightgreen)](https://yourusername.github.io/se_project_spots/)
 
-* Intro  
-* Figma  
-* Images  
-  
-**Intro**
-  
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.  
-  
-**Figma**  
-  
-* [Link to the project on Figma](https://www.figma.com/file/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project-%E2%80%94-Spots?type=design&node-id=2%3A60&mode=design&t=afgNFybdorZO6cQo-1)
-  
-**Images**  
-  
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
-  
-Good luck and have fun!
+A responsive web application for sharing and discovering curated locations. Built with a mobile-first approach and semantic markup.
+
+---
+
+## ✨ Key Features
+- **Profile Management**: Edit profile & create new posts
+- **Responsive Card Grid**: 1-3 columns (mobile/tablet/desktop)
+- **Interactive Elements**: Like buttons with hover effects ❤️
+- **Optimized Assets**: Compressed images + Poppins fonts
+- **Semantic HTML**: Accessible & SEO-friendly structure
+
+---
+
+## 🛠 Technologies
+- **Frontend**: HTML5, CSS3 (Grid/Flexbox)
+- **Design**: Poppins fonts, Media Queries, BEM methodology
+- **Hosting**: GitHub Pages
+- **Tools**: Figma (design reference), ImageOptim (compression)
+
+---
+
+## 🚀 Deployment
+
+   ```bash
+   git clone https://github.com/yourusername/se_project_spots.git
