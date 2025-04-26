@@ -27,6 +27,6 @@
 @media screen and (max-width: 626px) {
   .cards {
     padding: 24px 0;
-    border-top: 1px solid #212121; /* lighter for small screens */
+    border-top: 1px solid #212121;
   }
 }
