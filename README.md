@@ -1,29 +1,31 @@
-# SPOTS - Discover & Share Beautiful Locations 🌍
+# SPOTS - Beautiful Locations Discovery Platform
 
-[![GitHub Pages Deployment](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-brightgreen)](https://yourusername.github.io/se_project_spots/)
+![Project Screenshot](/images/screenshot.png) <!-- Add your own screenshot -->
 
-A responsive web application for sharing and discovering curated locations. Built with a mobile-first approach and semantic markup.
+## Project Description
+A responsive web platform for discovering and sharing beautiful locations. Features user profiles and interactive photo cards with like functionality.
 
----
+**Key Features:**
+- Responsive grid layout
+- User profile section
+- Interactive card system
+- Cross-device compatibility
 
-## ✨ Key Features
-- **Profile Management**: Edit profile & create new posts
-- **Responsive Card Grid**: 1-3 columns (mobile/tablet/desktop)
-- **Interactive Elements**: Like buttons with hover effects ❤️
-- **Optimized Assets**: Compressed images + Poppins fonts
-- **Semantic HTML**: Accessible & SEO-friendly structure
+## Technologies Used
+- **HTML5** semantic markup
+- **CSS3** Grid/Flexbox layouts
+- **BEM** methodology for CSS organization
+- Responsive design techniques
+- Media queries for different screen sizes
 
----
+## Live Demo
+[View Project on GitHub Pages](https://yourusername.github.io/project-name/)
 
-## 🛠 Technologies
-- **Frontend**: HTML5, CSS3 (Grid/Flexbox)
-- **Design**: Poppins fonts, Media Queries, BEM methodology
-- **Hosting**: GitHub Pages
-- **Tools**: Figma (design reference), ImageOptim (compression)
+## Video Presentation
+[Watch Project Walkthrough](https://drive.google.com/your-video-link) 
 
----
-
-## 🚀 Deployment
-
-   ```bash
-   git clone https://github.com/yourusername/se_project_spots.git
+## Development Notes
+- Implemented mobile-first approach
+- Used CSS Grid for card layouts
+- Optimized for 320px-1440px screen resolutions
+- Font: Poppins (Regular weight)
