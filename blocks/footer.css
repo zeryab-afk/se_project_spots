@@ -16,4 +16,13 @@
     width: calc(100% - 32px);
     margin: 0 auto;
   }
+
+  .cards__list {
+    gap: 24px 16px; /* Adjusted gap for better mobile layout */
+  }
+
+  .footer {
+    width: calc(100% - 32px); /* Adds 16px margin on both sides */
+    margin: 0 auto;
+  }
 }

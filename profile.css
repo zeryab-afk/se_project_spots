@@ -1,0 +1,125 @@
+.profile {
+  display: flex;
+  padding: 34px 0 20px;
+  position: relative;
+}
+
+.profile__avatar {
+  margin-right: 20px;
+  width: 190px;
+  height: 190px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.profile__info {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.profile__name {
+  font-size: 32px;
+  margin: 0;
+  font-weight: 500;
+  line-height: 1;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  max-width: 420px;
+}
+
+.profile__title {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 8px 0 0;
+  color: #212121b2;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  max-width: 420px;
+}
+
+
+.profile__edit-btn,
+.profile__add-btn {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  color: #212121;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.profile__edit-btn:hover{
+  opacity: 1;
+}
+.profile__add-btn:hover {
+  opacity: 0.8;
+}
+
+
+.profile__add-btn {
+  background-color: #212121;
+  color: white;
+  border: none;
+}
+
+.profile__icon {
+  width: 16px;
+  height: 16px;
+}
+
+  .profile__edit-btn:hover,
+  .profile__add-btn:hover {
+    opacity: 0.7;
+  }
+
+@media screen and (max-width: 626px) {
+  .profile {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .profile__avatar {
+    width: 72px;
+    height: 72px;
+  }
+
+  .profile__add-btn {
+    position: static;
+    order: 3;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .profile__edit-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .profile__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .profile__name {
+    max-width: 100%;
+  }
+}
