@@ -1,36 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="Your Name">
-  <meta name="description" content="SPOTS - Discover and share beautiful locations">
-  <meta name="keywords" content="HTML, CSS, responsive design, grid layout">
-  <link rel="stylesheet" href="vendor/fonts.css">
-  <link rel="stylesheet" href="pages/index.css">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Your Name" />
+  <meta name="description" content="SPOTS - Discover and share beautiful locations" />
+  <meta name="keywords" content="HTML, CSS, responsive design, grid layout" />
+
+  <!-- CSS files -->
+  <link rel="stylesheet" href="vendor/fonts.css" />
+  <link rel="stylesheet" href="blocks/header.css" />
+  <link rel="stylesheet" href="blocks/profile.css" />
+  <link rel="stylesheet" href="blocks/page.css" />
+  <link rel="stylesheet" href="blocks/content.css" />
+  <link rel="stylesheet" href="blocks/cards.css" />
+  <link rel="stylesheet" href="blocks/card.css" />
+  <link rel="stylesheet" href="blocks/footer.css" />
+  <link rel="stylesheet" href="blocks/modal.css" />
+  <link rel="stylesheet" href="pages/index.css" />
+
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   <title>SPOTS</title>
 </head>
 
 <body>
   <div class="page">
     <header class="header">
-      <img src="./images/logo.svg" alt="SPOTS logo" class="header__logo">
+      <img src="./images/logo.svg" alt="SPOTS logo" class="header__logo" />
     </header>
 
     <main class="content">
       <section class="profile page__section">
-        <img src="./images/avatar.jpg" alt="Bessie Coleman" class="profile__avatar">
+        <img src="./images/avatar.jpg" alt="Bessie Coleman" class="profile__avatar" />
         <div class="profile__info">
           <h1 class="profile__name">Bessie Coleman</h1>
           <p class="profile__title">Civil Advisor</p>
           <button type="button" class="profile__edit-btn">
-            <img src="./images/pencil.svg" alt="Edit icon" class="profile__icon">
+            <img src="./images/pencil.svg" alt="Edit icon" class="profile__icon" />
             Edit Profile
           </button>
         </div>
         <button type="button" class="profile__add-btn">
-          <img src="./images/plus.svg" alt="Add icon" class="profile__icon">
+          <img src="./images/plus.svg" alt="Add icon" class="profile__icon" />
           New Post
         </button>
       </section>
@@ -38,64 +49,92 @@
       <section class="cards page__section">
         <ul class="cards__list">
           <li class="card">
-            <img src="./images/1-photo-by-moritz-feldmann-from-pexels.jpg"
-              alt="Val Thorens" class="card__image">
+            <img src="./images/1-photo-by-moritz-feldmann-from-pexels.jpg" alt="Val Thorens" class="card__image" />
             <div class="card__content">
               <h2 class="card__title">Val Thorens</h2>
               <button type="button" class="card__like-btn"></button>
             </div>
           </li>
-      <li class="card">
-        <img src="./images/2-photo-by-ceiline-from-pexels.jpg"
-         alt="Restaurant Terrace"
-          class="card__image">
-          <div class="card__content">
-            <h2 class="card__title">Restaurant Terrace</h2>
-            <button type="button" class="card__like-btn"></button>
-          </div>
-      </li>
-      <li class="card">
-        <img src="./images/3-photo-by-tubanur-dogan-from-pexels.jpg"
-         alt="An outdoor cafe"
-          class="card__image">
-          <div class="card__content">
-            <h2 class="card__title">An outdoor cafe</h2>
-            <button type="button" class="card__like-btn"></button>
-          </div>
-      </li>
-      <li class="card">
-        <img src="./images/4-photo-by-maurice-laschet-from-pexels.jpg"
-         alt="A very long bridge over the Forest"
-          class="card__image">
-          <div class="card__content">
-            <h2 class="card__title">A very long bridge over the Forest</h2>
-            <button type="button" class="card__like-btn"></button>
-          </div>
-      </li>
-      <li class="card">
-        <img src="./images/5-photo-by-van-anh-nguyen-from-pexels.jpg"
-         alt="Tunnel with morning light"
-          class="card__image">
-          <div class="card__content">
-            <h2 class="card__title">Tunnel with morning light</h2>
-            <button type="button" class="card__like-btn"></button>
-          </div>
-      </li>
-      <li class="card">
-        <img src="./images/6-photo-by-moritz-feldmann-from-pexels.jpg"
-         alt="Mountain house"
-          class="card__image">
-          <div class="card__content">
-            <h2 class="card__title">Mountain house</h2>
-            <button type="button" class="card__like-btn"></button>
-          </div>
-      </li>
-    </ul>
-  </section>
-  </main>
-  <footer class="footer page__section">
-    <p class="footer__copyright">© 2025 Spots</p>
-  </footer>
+          <li class="card">
+            <img src="./images/2-photo-by-ceiline-from-pexels.jpg" alt="Restaurant Terrace" class="card__image" />
+            <div class="card__content">
+              <h2 class="card__title">Restaurant Terrace</h2>
+              <button type="button" class="card__like-btn"></button>
+            </div>
+          </li>
+          <li class="card">
+            <img src="./images/3-photo-by-tubanur-dogan-from-pexels.jpg" alt="An outdoor cafe" class="card__image" />
+            <div class="card__content">
+              <h2 class="card__title">An outdoor cafe</h2>
+              <button type="button" class="card__like-btn"></button>
+            </div>
+          </li>
+          <li class="card">
+            <img src="./images/4-photo-by-maurice-laschet-from-pexels.jpg" alt="A very long bridge over the Forest" class="card__image" />
+            <div class="card__content">
+              <h2 class="card__title">A very long bridge over the Forest</h2>
+              <button type="button" class="card__like-btn"></button>
+            </div>
+          </li>
+          <li class="card">
+            <img src="./images/5-photo-by-van-anh-nguyen-from-pexels.jpg" alt="Tunnel with morning light" class="card__image" />
+            <div class="card__content">
+              <h2 class="card__title">Tunnel with morning light</h2>
+              <button type="button" class="card__like-btn"></button>
+            </div>
+          </li>
+          <li class="card">
+            <img src="./images/6-photo-by-moritz-feldmann-from-pexels.jpg" alt="Mountain house" class="card__image" />
+            <div class="card__content">
+              <h2 class="card__title">Mountain house</h2>
+              <button type="button" class="card__like-btn"></button>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer page__section">
+      <p class="footer__copyright">© 2025 Spots</p>
+    </footer>
+  </div>
+
+   <!-- ========== EDIT PROFILE MODAL ========== -->
+  <div class="modal" id="edit-profile-modal">
+    <div class="modal__container">
+      <button type="button" class="modal__close-btn">X</button>
+      <h2 class="modal__title">Edit profile</h2>
+      <form class="modal__form">
+        <label for="profile-name-input" class="modal__label">
+          Name
+          <input id="profile-name-input" type="text" class="modal__input" placeholder="Type your name" />
+        </label>
+        <label for="profile-description-input" class="modal__label">
+          Description
+          <input id="profile-description-input" type="text" class="modal__input" placeholder="Describe yourself" />
+        </label>
+        <button type="submit" class="modal__submit-btn">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========== NEW POST MODAL ========== -->
+  <div class="modal modal_is-opened " id="new-post-modal">
+    <div class="modal__container">
+      <button type="button" class="modal__close-btn">X</button>
+      <h2 class="modal__title">New post</h2>
+      <form class="modal__form">
+        <label for="card-image-input" class="modal__label">
+          Image link
+          <input id="card-image-input" type="url" class="modal__input" placeholder="Place a link to the image" />
+        </label>
+        <label for="card-caption-input" class="modal__label">
+          Caption
+          <input id="card-caption-input" type="text" class="modal__input" placeholder="Type your caption" />
+        </label>
+        <button type="submit" class="modal__submit-btn">Save</button>
+      </form>
+    </div>
   </div>
 </body>
 </html>
