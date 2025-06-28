@@ -1,6 +1,6 @@
 # SPOTS - Beautiful Locations Discovery Platform
 
-![Project Screenshot](/images/screenshot.png) <!-- Add your own screenshot -->
+![Project Screenshot](images/screenshot.png)
 
 ## Project Description
 A responsive web platform for discovering and sharing beautiful locations. Features user profiles and interactive photo cards with like functionality.
@@ -22,7 +22,7 @@ A responsive web platform for discovering and sharing beautiful locations. Featu
 [View Project on GitHub Pages](https://zeryab-afk.github.io/se_project_spots/)
 
 ## Video Presentation
-[Watch Project Walkthrough](https://drive.google.com/your-video-link) 
+[Watch Project Walkthrough](https://drive.google.com/file/d/1VIC_MsJw1cv9cxpYir-NyY4KUyBm0iZf/view?usp=drivesdk) 
 
 ## Development Notes
 - Implemented mobile-first approach
