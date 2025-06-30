@@ -8,14 +8,6 @@
   <meta name="keywords" content="HTML, CSS, responsive design, grid layout" />
 
   <!-- CSS files -->
-  <link rel="stylesheet" href="blocks/header.css" />
-  <link rel="stylesheet" href="blocks/profile.css" />
-  <link rel="stylesheet" href="blocks/page.css" />
-  <link rel="stylesheet" href="blocks/content.css" />
-  <link rel="stylesheet" href="blocks/cards.css" />
-  <link rel="stylesheet" href="blocks/card.css" />
-  <link rel="stylesheet" href="blocks/footer.css" />
-  <link rel="stylesheet" href="blocks/modal.css" />
   <link rel="stylesheet" href="pages/index.css" />
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   <title>SPOTS</title>
@@ -100,7 +92,9 @@
    <!-- ========== EDIT PROFILE MODAL ========== -->
   <div class="modal" id="edit-profile-modal">
     <div class="modal__container">
-      <button type="button" class="modal__close-btn">X</button>
+      <button type="button" class="modal__close-btn">
+  <img src="./images/close.svg" alt="Close modal" class="modal__close-icon" />
+</button>
       <h2 class="modal__title">Edit profile</h2>
       <form class="modal__form">
         <label for="profile-name-input" class="modal__label">
@@ -117,9 +111,11 @@
   </div>
 
   <!-- ========== NEW POST MODAL ========== -->
-  <div class="modal " id="new-post-modal">
+  <div class="modal modal_is-opened " id="new-post-modal">
     <div class="modal__container">
-      <button type="button" class="modal__close-btn">X</button>
+      <button type="button" class="modal__close-btn">
+  <img src="./images/close.svg" alt="Close modal" class="modal__close-icon" />
+</button>
       <h2 class="modal__title">New post</h2>
       <form class="modal__form">
         <label for="card-image-input" class="modal__label">
