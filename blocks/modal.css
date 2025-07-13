@@ -1,5 +1,10 @@
 .modal {
   visibility: hidden;
+  /* 🔶 ADDED: for fade-out */
+  opacity: 0;
+  /* 🔶 ADDED: transition for fade */
+  transition: visibility 0.3s ease, opacity 0.3s ease;
+
   position: fixed;
   top: 0;
   right: 0;
@@ -15,6 +20,8 @@
 
 .modal_is-opened {
   visibility: visible;
+  /* 🔶 ADDED: show fade-in */
+  opacity: 1;
 }
 
 .modal__container {
@@ -28,6 +35,17 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
+
+  /* 🔶 ADDED: smooth slide-in effect */
+  transform: translateY(-30px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* 🔶 ADDED: active modal slide-in effect */
+.modal_is-opened .modal__container {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .modal__close-btn {
@@ -50,7 +68,6 @@
   padding: 0;
   transition: color 0.2s ease;
 }
-
 
 .modal__close-btn:hover {
   color: #000;
@@ -103,18 +120,20 @@
   transition: background 0.3s ease;
   align-self: flex-start;
 }
+
 .modal__submit-btn:hover {
   background-color: #333;
 }
+
 @media screen and (max-width: 480px) {
   .modal {
-    padding: 0 16px; /* ✅ Ensure padding stays on small screens */
+    padding: 0 16px;
   }
 
   .modal__container {
     padding: 24px 20px;
     border-radius: 6px;
-    max-width: 100%; /* ✅ Full responsive width inside modal padding */
+    max-width: 100%;
   }
 
   .modal__title {
