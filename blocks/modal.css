@@ -35,17 +35,6 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
-
-  /* 🔶 ADDED: smooth slide-in effect */
-  transform: translateY(-30px);
-  opacity: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-/* 🔶 ADDED: active modal slide-in effect */
-.modal_is-opened .modal__container {
-  transform: translateY(0);
-  opacity: 1;
 }
 
 .modal__close-btn {
@@ -126,10 +115,6 @@
 }
 
 @media screen and (max-width: 480px) {
-  .modal {
-    padding: 0 16px;
-  }
-
   .modal__container {
     padding: 22px 12px 12px;
     border-radius: 6px;
@@ -137,7 +122,7 @@
   }
 
   .modal__title {
-    font-size: 40px;
+    font-size: 20px;
     margin-bottom: 24px;
   }
 
