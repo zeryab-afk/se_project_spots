@@ -26,6 +26,15 @@ const initialCards = [
   }
 ];
 
+// === UNIVERSAL MODAL FUNCTIONS ===
+function openModal(modal) {
+  modal.classList.add('modal_is-opened');
+}
+
+function closeModal(modal) {
+  modal.classList.remove('modal_is-opened');
+}
+
 // === SELECT ELEMENTS ===
 const editProfileButton = document.querySelector('.profile__edit-btn');
 const newPostButton = document.querySelector('.profile__add-btn');
@@ -48,35 +57,25 @@ const cardImageInput = document.getElementById('card-image-input');
 const cardCaptionInput = document.getElementById('card-caption-input');
 const cardsList = document.querySelector('.cards__list');
 
-// === MODAL HANDLERS ===
-function openModal(modal) {
-  modal.classList.add('modal_is-opened');
-}
-
-function closeModal(modal) {
-  modal.classList.remove('modal_is-opened');
-}
-
-// === EVENT LISTENERS FOR OPENING ===
+// === EVENT LISTENERS FOR OPENING MODALS ===
 editProfileButton.addEventListener('click', () => {
-  // ✅ Fill form fields with current profile data
   profileNameInput.value = profileName.textContent;
   profileDescInput.value = profileTitle.textContent;
   openModal(editProfileModal);
 });
 
 newPostButton.addEventListener('click', () => {
-  // Optional: Clear previous inputs
   cardImageInput.value = '';
   cardCaptionInput.value = '';
   openModal(newPostModal);
 });
 
-// === EVENT LISTENERS FOR CLOSING ===
+// === EVENT LISTENERS FOR CLOSING MODALS ===
 editProfileCloseButton.addEventListener('click', () => closeModal(editProfileModal));
 newPostCloseButton.addEventListener('click', () => closeModal(newPostModal));
 
-// ✅ 2. Handle Edit Profile Form Submit
+// === FORM SUBMISSIONS ===
+// Edit Profile
 editProfileForm.addEventListener('submit', (e) => {
   e.preventDefault();
   profileName.textContent = profileNameInput.value;
@@ -84,10 +83,9 @@ editProfileForm.addEventListener('submit', (e) => {
   closeModal(editProfileModal);
 });
 
-// ✅ 3. Handle New Post Form Submit
+// New Post
 newPostForm.addEventListener('submit', (e) => {
   e.preventDefault();
-
   const imageUrl = cardImageInput.value;
   const caption = cardCaptionInput.value;
 
@@ -100,12 +98,11 @@ newPostForm.addEventListener('submit', (e) => {
       <button type="button" class="card__like-btn"></button>
     </div>
   `;
-
   cardsList.prepend(card);
   closeModal(newPostModal);
 });
 
-// Optional: Close modal by clicking outside
+// === CLOSE MODAL WHEN CLICKING OUTSIDE MODAL CONTAINER ===
 document.addEventListener('click', (e) => {
   const modals = [editProfileModal, newPostModal];
   modals.forEach((modal) => {
@@ -119,7 +116,7 @@ document.addEventListener('click', (e) => {
   });
 });
 
-// === LOG CARD NAMES ===
+// === LOG CARD NAMES TO CONSOLE ===
 initialCards.forEach((card) => {
   console.log(card.name);
 });
