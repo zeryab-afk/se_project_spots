@@ -6,8 +6,7 @@
   <meta name="author" content="Your Name" />
   <meta name="description" content="SPOTS - Discover and share beautiful locations" />
   <meta name="keywords" content="HTML, CSS, responsive design, grid layout" />
-
-  <!-- CSS files -->
+  <link rel="stylesheet" href="vendor/fonts.css" />
   <link rel="stylesheet" href="blocks/header.css" />
   <link rel="stylesheet" href="blocks/profile.css" />
   <link rel="stylesheet" href="blocks/page.css" />
@@ -46,48 +45,7 @@
 
       <section class="cards page__section">
         <ul class="cards__list">
-          <li class="card">
-            <img src="./images/1-photo-by-moritz-feldmann-from-pexels.jpg" alt="Val Thorens" class="card__image" />
-            <div class="card__content">
-              <h2 class="card__title">Val Thorens</h2>
-              <button type="button" class="card__like-btn"></button>
-            </div>
-          </li>
-          <li class="card">
-            <img src="./images/2-photo-by-ceiline-from-pexels.jpg" alt="Restaurant Terrace" class="card__image" />
-            <div class="card__content">
-              <h2 class="card__title">Restaurant Terrace</h2>
-              <button type="button" class="card__like-btn"></button>
-            </div>
-          </li>
-          <li class="card">
-            <img src="./images/3-photo-by-tubanur-dogan-from-pexels.jpg" alt="An outdoor cafe" class="card__image" />
-            <div class="card__content">
-              <h2 class="card__title">An outdoor cafe</h2>
-              <button type="button" class="card__like-btn"></button>
-            </div>
-          </li>
-          <li class="card">
-            <img src="./images/4-photo-by-maurice-laschet-from-pexels.jpg" alt="A very long bridge over the Forest" class="card__image" />
-            <div class="card__content">
-              <h2 class="card__title">A very long bridge over the Forest</h2>
-              <button type="button" class="card__like-btn"></button>
-            </div>
-          </li>
-          <li class="card">
-            <img src="./images/5-photo-by-van-anh-nguyen-from-pexels.jpg" alt="Tunnel with morning light" class="card__image" />
-            <div class="card__content">
-              <h2 class="card__title">Tunnel with morning light</h2>
-              <button type="button" class="card__like-btn"></button>
-            </div>
-          </li>
-          <li class="card">
-            <img src="./images/6-photo-by-moritz-feldmann-from-pexels.jpg" alt="Mountain house" class="card__image" />
-            <div class="card__content">
-              <h2 class="card__title">Mountain house</h2>
-              <button type="button" class="card__like-btn"></button>
-            </div>
-          </li>
+          <!-- Cards will be dynamically inserted here -->
         </ul>
       </section>
     </main>
@@ -97,12 +55,24 @@
     </footer>
   </div>
 
-   <!-- ========== EDIT PROFILE MODAL ========== -->
+  <!-- ========== CARD TEMPLATE ========== -->
+  <template id="card-template">
+    <li class="card">
+      <img src="" alt="" class="card__image" />
+      <button type="button" class="card__delete-btn"></button>
+      <div class="card__content">
+        <h2 class="card__title"></h2>
+        <button type="button" class="card__like-btn"></button>
+      </div>
+    </li>
+  </template>
+
+  <!-- ========== EDIT PROFILE MODAL ========== -->
   <div class="modal" id="edit-profile-modal">
     <div class="modal__container">
       <button type="button" class="modal__close-btn">X</button>
       <h2 class="modal__title">Edit profile</h2>
-      <form class="modal__form">
+      <form class="modal__form" id="edit-profile-form">
         <label for="profile-name-input" class="modal__label">
           Name
           <input id="profile-name-input" type="text" class="modal__input" placeholder="Type your name" />
@@ -117,11 +87,11 @@
   </div>
 
   <!-- ========== NEW POST MODAL ========== -->
-  <div class="modal " id="new-post-modal">
+  <div class="modal" id="new-post-modal">
     <div class="modal__container">
       <button type="button" class="modal__close-btn">X</button>
       <h2 class="modal__title">New post</h2>
-      <form class="modal__form">
+      <form class="modal__form" id="new-post-form">
         <label for="card-image-input" class="modal__label">
           Image link
           <input id="card-image-input" type="url" class="modal__input" placeholder="Place a link to the image" />
@@ -134,6 +104,16 @@
       </form>
     </div>
   </div>
+
+  <!-- ========== IMAGE PREVIEW MODAL ========== -->
+  <div class="modal" id="image-preview-modal">
+    <div class="modal__container modal__container_preview">
+      <button type="button" class="modal__close-btn"></button>
+      <img src="" alt="" class="modal__preview-image" />
+      <p class="modal__caption"></p>
+    </div>
+  </div>
+
   <script src="./scripts/index.js"></script>
 </body>
 </html>
