@@ -27,6 +27,22 @@
   font-family: 'Poppins', sans-serif;
 }
 
+/* Image Preview Modal Specific Styling */
+.modal__container_preview {
+  position: absolute; /* Changed to absolute for custom positioning */
+  background: transparent; /* Transparent background */
+  padding: 0; /* No padding for image preview */
+  width: 446.4331359863281px; /* Desktop width */
+  height: 661px; /* Desktop height */
+  border-radius: 8px; /* Desktop border-radius */
+  top: 81px; /* Desktop top */
+  left: 497px; /* Desktop left */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .modal__close-btn {
   position: absolute;
   top: 32px;
@@ -46,8 +62,8 @@
   justify-content: center;
   padding: 0;
   transition: color 0.2s ease;
+  border-radius: 50%; /* Round close button */
 }
-
 
 .modal__close-btn:hover {
   color: #000;
@@ -100,18 +116,46 @@
   transition: background 0.3s ease;
   align-self: flex-start;
 }
+
 .modal__submit-btn:hover {
   background-color: #333;
 }
+
+/* Image Preview Specific Elements */
+.modal__preview-image {
+  max-width: 100%; /* Fit within container */
+  max-height: 100%; /* Fit within container */
+  border-radius: 8px; /* Match container */
+  object-fit: contain; /* Preserve aspect ratio */
+}
+
+.modal__caption {
+  color: white;
+  text-align: center;
+  margin-top: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 5px 10px;
+  border-radius: 4px;
+  width: fit-content;
+}
+
 @media screen and (max-width: 480px) {
   .modal {
-    padding: 0 16px; /* ✅ Ensure padding stays on small screens */
+    padding: 0 16px; /* Ensure padding stays on small screens */
   }
 
   .modal__container {
     padding: 24px 20px;
     border-radius: 6px;
-    max-width: 100%; /* ✅ Full responsive width inside modal padding */
+    max-width: 100%; /* Full responsive width inside modal padding */
+  }
+
+  .modal__container_preview {
+    width: 288px; /* Mobile width */
+    height: 426.5660400390625px; /* Mobile height */
+    border-radius: 4px; /* Mobile border-radius */
+    top: 89px; /* Mobile top */
+    left: 16px; /* Mobile left */
   }
 
   .modal__title {
@@ -145,5 +189,10 @@
     width: 32px;
     height: 32px;
     font-size: 24px;
+  }
+
+  .modal__preview-image {
+    max-width: 100%; /* Fit within mobile container */
+    max-height: 100%; /* Fit within mobile container */
   }
 }
