@@ -1,3 +1,9 @@
+.card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
 .card__image {
   width: 100%;
   height: 288px;
@@ -26,16 +32,49 @@
 
 .card__like-btn {
   background: url(../images/like-icon-dark.svg) no-repeat center;
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 20px;
+   top: 18px;
+  left: 110px;
   border: none;
   cursor: pointer;
   opacity: 0.4;
   transition: opacity 0.2s;
 }
 
+/* Active like state */
+.card__like-btn_active {
+  background-image: url(../images/liked.svg);
+  opacity: 1;
+}
+
+/* Hover state */
 .card__like-btn:hover {
   opacity: 1;
+}
+
+/* Delete Button Styling */
+.card__delete-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  background: url(../images/defualt\ delete.svg) no-repeat center; /* Assume trashcan icon */
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+  padding: 0;
+  display: none;
+  border-radius: 50%;
+}
+
+.card:hover .card__delete-btn {
+  display: block;
+}
+
+.card__delete-btn:hover {
+  background: url(../images/hover\ delete.svg) no-repeat center; /* Assume hover state */
 }
 
 @media screen and (max-width: 767px) {
