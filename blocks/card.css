@@ -34,7 +34,7 @@
   background: url(../images/like-icon-dark.svg) no-repeat center;
   width: 22px;
   height: 20px;
-   top: 18px;
+  top: 18px;
   left: 110px;
   border: none;
   cursor: pointer;
@@ -44,7 +44,9 @@
 
 /* Active like state */
 .card__like-btn_active {
-  background-image: url(../images/liked.svg);
+  background-image: url(../images/Union.svg);
+  background-repeat: no-repeat; /* ✅ added */
+  background-position: center;
   opacity: 1;
 }
 
@@ -60,21 +62,20 @@
   right: 20px;
   width: 32px;
   height: 32px;
-  background: url(../images/defualt\ delete.svg) no-repeat center; /* Assume trashcan icon */
+  background: url(../images/defualt\ delete.svg) no-repeat center;
   border: none;
   cursor: pointer;
   z-index: 2;
   padding: 0;
-  display: none;
   border-radius: 50%;
+  /* ✅ Removed display: none */
 }
 
-.card:hover .card__delete-btn {
-  display: block;
-}
+/* ❌ Removed card:hover rule that was toggling visibility */
 
+/* Hover state for delete button */
 .card__delete-btn:hover {
-  background: url(../images/hover\ delete.svg) no-repeat center; /* Assume hover state */
+  background: url(../images/hover\ delete.svg) no-repeat center;
 }
 
 @media screen and (max-width: 767px) {
