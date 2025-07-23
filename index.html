@@ -1,25 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="author" content="Your Name" />
   <meta name="description" content="SPOTS - Discover and share beautiful locations" />
   <meta name="keywords" content="HTML, CSS, responsive design, grid layout" />
-  <link rel="stylesheet" href="vendor/fonts.css" />
-  <link rel="stylesheet" href="blocks/header.css" />
-  <link rel="stylesheet" href="blocks/profile.css" />
-  <link rel="stylesheet" href="blocks/page.css" />
-  <link rel="stylesheet" href="blocks/content.css" />
-  <link rel="stylesheet" href="blocks/cards.css" />
-  <link rel="stylesheet" href="blocks/card.css" />
-  <link rel="stylesheet" href="blocks/footer.css" />
-  <link rel="stylesheet" href="blocks/modal.css" />
   <link rel="stylesheet" href="pages/index.css" />
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   <title>SPOTS</title>
 </head>
-
 <body>
   <div class="page">
     <header class="header">
@@ -70,7 +58,7 @@
   <!-- ========== EDIT PROFILE MODAL ========== -->
   <div class="modal" id="edit-profile-modal">
     <div class="modal__container">
-      <button type="button" class="modal__close-btn">X</button>
+      <button type="button" class="modal__close-btn"></button>
       <h2 class="modal__title">Edit profile</h2>
       <form class="modal__form" id="edit-profile-form">
         <label for="profile-name-input" class="modal__label">
@@ -89,7 +77,7 @@
   <!-- ========== NEW POST MODAL ========== -->
   <div class="modal" id="new-post-modal">
     <div class="modal__container">
-      <button type="button" class="modal__close-btn">X</button>
+      <button type="button" class="modal__close-btn"></button>
       <h2 class="modal__title">New post</h2>
       <form class="modal__form" id="new-post-form">
         <label for="card-image-input" class="modal__label">
@@ -105,14 +93,14 @@
     </div>
   </div>
 
-  <!-- ========== IMAGE PREVIEW MODAL ========== -->
-  <div class="modal" id="image-preview-modal">
-    <div class="modal__container modal__container_preview">
-      <button type="button" class="modal__close-btn"></button>
-      <img src="" alt="" class="modal__preview-image" />
-      <p class="modal__caption"></p>
-    </div>
+  <!-- ✅✅ FIXED IMAGE PREVIEW MODAL ✅✅ -->
+<div class="modal modal_type_preview" id="image-preview-modal"> <!-- ✅ Added modifier class -->
+  <div class="modal__container modal__container_preview">
+    <button type="button" class="modal__close-btn modal__close-btn_type_preview"></button> <!-- ✅ Removed "X" and added modifier -->
+    <img src="#" alt="" class="modal__preview-image" /> <!-- ✅ src="#" instead of empty string -->
+    <p class="modal__caption"></p>
   </div>
+</div>
 
   <script src="./scripts/index.js"></script>
 </body>
