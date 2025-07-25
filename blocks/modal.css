@@ -188,7 +188,7 @@
   right: -52.5px; /* Adjusted to match Figma desktop preview */
   width: 40px;
   height: 40px;
-  background: url('../images/Close\ Icon.svg') no-repeat center;
+  background: url('../images/Close\ Icon.svg') no-repeat center; /* Use correct white button export from Figma */
   background-size: contain;
   border: none;
   cursor: pointer;
@@ -199,7 +199,7 @@
 
 @media screen and (max-width: 627px) {
   .modal__close-btn_type_preview {
-    top: -48px;
+    top: -48px; /* Matches mobile preview top-right corner */
     right:0px;
     width: 40px;
     height: 40px;
@@ -240,4 +240,27 @@
   .modal__caption {
     font-size: 16px; /* ✅ FIXED: Caption font-size for mobile */
   }
+}
+
+/* Validation Error Styles */
+.modal__error {
+  color: #ff0000;
+  font-size: 12px;
+  margin-top: 4px;
+  visibility: hidden;
+  min-height: 16px;
+}
+
+.modal__error_visible {
+  visibility: visible;
+}
+
+.modal__input_type_error {
+  border-color: #ff0000;
+}
+
+.modal__button_disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #cccccc !important;
 }
