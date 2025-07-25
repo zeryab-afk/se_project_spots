@@ -65,13 +65,31 @@
       <form class="modal__form" id="edit-profile-form">
         <label for="profile-name-input" class="modal__label">
           Name
-          <input id="profile-name-input" type="text" class="modal__input" placeholder="Type your name" />
+          <input
+            id="profile-name-input"
+            type="text"
+            class="modal__input"
+            placeholder="Type your name"
+            required
+            minlength="2"
+            maxlength="40"
+          />
+          <span id="profile-name-input-error" class="modal__error"></span>
         </label>
         <label for="profile-description-input" class="modal__label">
           Description
-          <input id="profile-description-input" type="text" class="modal__input" placeholder="Describe yourself" />
+          <input
+            id="profile-description-input"
+            type="text"
+            class="modal__input"
+            placeholder="Describe yourself"
+            required
+            minlength="2"
+            maxlength="200"
+          />
+          <span id="profile-description-input-error" class="modal__error"></span>
         </label>
-        <button type="submit" class="modal__submit-btn">Save</button>
+        <button type="submit" class="modal__submit-btn modal__button_disabled" disabled>Save</button>
       </form>
     </div>
   </div>
@@ -84,26 +102,43 @@
       <form class="modal__form" id="new-post-form">
         <label for="card-image-input" class="modal__label">
           Image link
-          <input id="card-image-input" type="url" class="modal__input" placeholder="Place a link to the image" />
+          <input
+            id="card-image-input"
+            type="url"
+            class="modal__input"
+            placeholder="Place a link to the image"
+            required
+          />
+          <span id="card-image-input-error" class="modal__error"></span>
         </label>
         <label for="card-caption-input" class="modal__label">
           Caption
-          <input id="card-caption-input" type="text" class="modal__input" placeholder="Type your caption" />
+          <input
+            id="card-caption-input"
+            type="text"
+            class="modal__input"
+            placeholder="Type your caption"
+            required
+            minlength="2"
+            maxlength="30"
+          />
+          <span id="card-caption-input-error" class="modal__error"></span>
         </label>
-        <button type="submit" class="modal__submit-btn">Save</button>
+        <button type="submit" class="modal__submit-btn modal__button_disabled" disabled>Save</button>
       </form>
     </div>
   </div>
 
-  <!-- ✅✅ FIXED IMAGE PREVIEW MODAL ✅✅ -->
-<div class="modal modal_type_preview" id="image-preview-modal"> <!-- ✅ Added modifier class -->
-  <div class="modal__container modal__container_preview">
-    <button type="button" class="modal__close-btn modal__close-btn_type_preview"></button> <!-- ✅ Removed "X" and added modifier -->
-    <img src="#" alt="" class="modal__preview-image" /> <!-- ✅ src="#" instead of empty string -->
-    <p class="modal__caption"></p>
+  <!-- IMAGE PREVIEW MODAL -->
+  <div class="modal modal_type_preview" id="image-preview-modal">
+    <div class="modal__container modal__container_preview">
+      <button type="button" class="modal__close-btn modal__close-btn_type_preview"></button>
+      <img src="#" alt="" class="modal__preview-image" />
+      <p class="modal__caption"></p>
+    </div>
   </div>
-</div>
 
-  <script src="./scripts/index.js"></script>
+  <script src="./scripts/validation.js" type="module"></script>
+  <script src="./scripts/index.js" type="module"></script>
 </body>
 </html>
