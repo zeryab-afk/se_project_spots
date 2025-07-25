@@ -58,7 +58,10 @@
   flex-direction: column;
   justify-content: center;
   /* align-items removed as per review */
+  max-width: none;
+  width: unset;
 }
+
 
 /* ========== MODAL TITLE ========== */
 .modal__title {
@@ -178,13 +181,14 @@
 }
 
 /* ✅ FIXED: White button for preview */
+/* ========== CLOSE BUTTON (PREVIEW) ========== */
 .modal__close-btn_type_preview {
-  position: absolute; /* ✅ Ensure proper positioning */
-  top: 24px;           /* ✅ Adjust based on Figma */
-  right: 24px;         /* ✅ Adjust based on Figma */
+  position: absolute;
+  top: 0px; /* Adjusted to match Figma desktop preview (top-right corner) */
+  right: -52.5px; /* Adjusted to match Figma desktop preview */
   width: 40px;
   height: 40px;
-  background: url('../images/close btn default.svg') no-repeat center;
+  background: url('../images/Close\ Icon.svg') no-repeat center;
   background-size: contain;
   border: none;
   cursor: pointer;
@@ -193,12 +197,12 @@
   z-index: 10;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 627px) {
   .modal__close-btn_type_preview {
-    top: 16px;
-    right: 16px;
-    width: 32px;
-    height: 32px;
+    top: -48px;
+    right:0px;
+    width: 40px;
+    height: 40px;
   }
 }
 
