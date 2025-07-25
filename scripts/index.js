@@ -51,16 +51,14 @@ const cardImageInput = document.getElementById('card-image-input');
 const editProfileForm = document.getElementById('edit-profile-form');
 const newPostForm = document.getElementById('new-post-form');
 
-// Validation Configuration
 const validationConfig = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__submit-btn",
-  inactiveButtonClass: "modal__button_disabled",
+  inactiveButtonClass: "modal__submit-btn_disabled", // Updated this line
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible"
 };
-
 // Initialize validation
 enableValidation(validationConfig);
 
