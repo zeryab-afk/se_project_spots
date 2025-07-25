@@ -1,3 +1,6 @@
+// index.js
+import { enableValidation, clearValidation } from './validation.js';
+
 // Initial Cards Data
 const initialCards = [
   {
@@ -45,22 +48,39 @@ const profileNameInput = document.getElementById('profile-name-input');
 const profileDescriptionInput = document.getElementById('profile-description-input');
 const cardCaptionInput = document.getElementById('card-caption-input');
 const cardImageInput = document.getElementById('card-image-input');
+const editProfileForm = document.getElementById('edit-profile-form');
+const newPostForm = document.getElementById('new-post-form');
+
+// Validation Configuration
+const validationConfig = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__submit-btn",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible"
+};
+
+// Initialize validation
+enableValidation(validationConfig);
 
 // Modal Functions
 function openModal(modal) {
   modal.classList.add('modal_is-opened');
-  document.addEventListener('keydown', closeOnEscape);
+  document.addEventListener('keydown', handleEscapeKey);
 }
 
 function closeModal(modal) {
   modal.classList.remove('modal_is-opened');
-  document.removeEventListener('keydown', closeOnEscape);
+  document.removeEventListener('keydown', handleEscapeKey);
 }
 
-function closeOnEscape(evt) {
+function handleEscapeKey(evt) {
   if (evt.key === 'Escape') {
     const openedModal = document.querySelector('.modal_is-opened');
-    closeModal(openedModal);
+    if (openedModal) {
+      closeModal(openedModal);
+    }
   }
 }
 
@@ -77,19 +97,16 @@ function getCardElement(data) {
   cardImage.alt = data.name;
   cardTitle.textContent = data.name;
 
-  // Like Button Functionality
   likeButton.addEventListener('click', (e) => {
     e.stopPropagation();
     likeButton.classList.toggle('card__like-btn_active');
   });
 
-  // Delete Button Functionality
   deleteButton.addEventListener('click', (e) => {
     e.stopPropagation();
     card.remove();
   });
 
-  // Image Click for Preview Modal
   cardImage.addEventListener('click', () => {
     previewImage.src = data.link;
     previewImage.alt = data.name;
@@ -120,8 +137,9 @@ function handleNewPostSubmit(evt) {
     name: cardCaptionInput.value,
     link: cardImageInput.value
   };
-  cardsList.prepend(getCardElement(newCard)); // Prepend new card
-  evt.target.reset();
+  cardsList.prepend(getCardElement(newCard));
+  newPostForm.reset();
+  clearValidation(newPostForm, validationConfig);
   closeModal(newPostModal);
 }
 
@@ -129,16 +147,20 @@ function handleNewPostSubmit(evt) {
 editProfileButton.addEventListener('click', () => {
   profileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileTitle.textContent;
+  clearValidation(editProfileForm, validationConfig);
   openModal(editProfileModal);
 });
 
+newPostButton.addEventListener('click', () => {
+  openModal(newPostModal);
+});
+
 editProfileCloseButton.addEventListener('click', () => closeModal(editProfileModal));
-newPostButton.addEventListener('click', () => openModal(newPostModal));
 newPostCloseButton.addEventListener('click', () => closeModal(newPostModal));
 previewCloseButton.addEventListener('click', () => closeModal(imagePreviewModal));
 
-document.getElementById('edit-profile-form').addEventListener('submit', handleEditProfileSubmit);
-document.getElementById('new-post-form').addEventListener('submit', handleNewPostSubmit);
+editProfileForm.addEventListener('submit', handleEditProfileSubmit);
+newPostForm.addEventListener('submit', handleNewPostSubmit);
 
 // Close modal when clicking outside
 document.addEventListener('click', (evt) => {
