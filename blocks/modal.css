@@ -1,0 +1,243 @@
+/* ========== MODAL BASE ========== */
+.modal {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  padding: 0 10px;
+  transition: visibility 0.3s, opacity 0.3s ease-in;
+}
+
+/* 🔧 Modifier for preview modal */
+.modal_type_preview {
+  padding: 0 16px;
+}
+
+/* ========== MODAL VISIBLE STATE ========== */
+.modal_is-opened {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* ========== MODAL CONTAINER ========== */
+.modal__container {
+  position: relative;
+  background-color: #ffffff;
+  padding: 32px 50px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 730px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box; /* ✅ FIXED: Added as per review */
+}
+
+/* ✅ Mobile styles */
+@media screen and (max-width: 480px) {
+  .modal__container {
+    padding: 24px 20px;
+    border-radius: 6px;
+    max-width: 100%;
+  }
+}
+
+/* 🔧 Preview container styles */
+.modal__container_preview {
+  position: relative;
+  background: transparent;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items removed as per review */
+  max-width: none;
+  width: unset;
+}
+
+
+/* ========== MODAL TITLE ========== */
+.modal__title {
+  margin: 0 0 32px;
+  font-size: 32px;
+  font-weight: 500;
+  color: #212121;
+}
+
+@media screen and (max-width: 480px) {
+  .modal__title {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+}
+
+/* ========== FORM ========== */
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+}
+
+@media screen and (max-width: 480px) {
+  .modal__form {
+    gap: 24px;
+  }
+}
+
+/* ========== LABELS ========== */
+.modal__label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: #000;
+}
+
+@media screen and (max-width: 480px) {
+  .modal__label {
+    font-size: 13px;
+  }
+}
+
+/* ========== INPUT FIELDS ========== */
+.modal__input {
+  margin-top: 8px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+.modal__input::placeholder {
+  color: #2121214d;
+}
+
+@media screen and (max-width: 480px) {
+  .modal__input {
+    padding: 10px;
+    font-size: 15px;
+  }
+}
+
+/* ========== SUBMIT BUTTON ========== */
+.modal__submit-btn {
+  width: 156px;
+  height: 52px;
+  background-color: #212121;
+  color: #FCF5E5;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  align-self: flex-start;
+}
+
+.modal__submit-btn:hover {
+  background-color: #333;
+}
+
+@media screen and (max-width: 480px) {
+  .modal__submit-btn {
+    width: 100%;
+    height: 48px;
+    font-size: 15px;
+    border-radius: 6px;
+  }
+}
+
+/* ========== CLOSE BUTTON ========== */
+.modal__close-btn {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  width: 40px;
+  height: 40px;
+  background: url('../images/close btn closed.svg') no-repeat center;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 50%;
+  transition: opacity 0.2s ease;
+}
+
+@media screen and (max-width: 480px) {
+  .modal__close-btn {
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* ✅ FIXED: White button for preview */
+/* ========== CLOSE BUTTON (PREVIEW) ========== */
+.modal__close-btn_type_preview {
+  position: absolute;
+  top: 0px; /* Adjusted to match Figma desktop preview (top-right corner) */
+  right: -52.5px; /* Adjusted to match Figma desktop preview */
+  width: 40px;
+  height: 40px;
+  background: url('../images/Close\ Icon.svg') no-repeat center;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+@media screen and (max-width: 627px) {
+  .modal__close-btn_type_preview {
+    top: -48px;
+    right:0px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ========== IMAGE PREVIEW ========== */
+.modal__preview-image {
+  max-width: 80vw;
+  max-height: 80vh;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 480px) {
+  .modal__preview-image {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+/* ========== PREVIEW CAPTION ========== */
+.modal__caption {
+  color: white;
+  margin-top: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 5px 10px;
+  border-radius: 4px;
+  width: fit-content;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+@media screen and (max-width: 480px) {
+  .modal__caption {
+    font-size: 16px; /* ✅ FIXED: Caption font-size for mobile */
+  }
+}
