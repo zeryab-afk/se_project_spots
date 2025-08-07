@@ -6,35 +6,34 @@
   <meta name="author" content="Your Name" />
   <meta name="description" content="SPOTS - Discover and share beautiful locations" />
   <meta name="keywords" content="HTML, CSS, responsive design, grid layout" />
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   <title>SPOTS</title>
 </head>
 <body>
   <div class="page">
     <header class="header">
-      <img src="./images/logo.svg" alt="SPOTS logo" class="header__logo" />
+      <img src="<%=require('./images/logo.svg')%>" alt="SPOTS logo" class="header__logo" />
     </header>
 
     <main class="content">
       <section class="profile page__section">
-        <img src="./images/avatar.jpg" alt="Bessie Coleman" class="profile__avatar" />
+        <img src="<%=require('./images/avatar.jpg')%>" alt="Bessie Coleman" class="profile__avatar" />
         <div class="profile__info">
           <h1 class="profile__name">Bessie Coleman</h1>
           <p class="profile__title">Civil Advisor</p>
           <button type="button" class="profile__edit-btn">
-            <img src="./images/pencil.svg" alt="Edit icon" class="profile__icon" />
+            <img src="<%=require('./images/pencil.svg')%>" alt="Edit icon" class="profile__icon" />
             Edit Profile
           </button>
         </div>
         <button type="button" class="profile__add-btn">
-          <img src="./images/plus.svg" alt="Add icon" class="profile__icon" />
+          <img src="<%=require('./images/plus.svg')%>" alt="Add icon" class="profile__icon" />
           New Post
         </button>
       </section>
 
       <section class="cards page__section">
         <ul class="cards__list">
-          <!-- Cards will be dynamically inserted here -->
+          <!-- Cards will be added by JavaScript -->
         </ul>
       </section>
     </main>
@@ -44,7 +43,6 @@
     </footer>
   </div>
 
-  <!-- ========== CARD TEMPLATE ========== -->
   <template id="card-template">
     <li class="card">
       <img src="" alt="" class="card__image" />
@@ -56,7 +54,7 @@
     </li>
   </template>
 
-  <!-- ========== EDIT PROFILE MODAL ========== -->
+  <!-- Edit Modal -->
   <div class="modal" id="edit-profile-modal">
     <div class="modal__container">
       <button type="button" class="modal__close-btn"></button>
@@ -75,7 +73,7 @@
     </div>
   </div>
 
-  <!-- ========== NEW POST MODAL ========== -->
+  <!-- New Post Modal -->
   <div class="modal" id="new-post-modal">
     <div class="modal__container">
       <button type="button" class="modal__close-btn"></button>
@@ -94,13 +92,13 @@
     </div>
   </div>
 
-  <!-- ✅✅ FIXED IMAGE PREVIEW MODAL ✅✅ -->
-<div class="modal modal_type_preview" id="image-preview-modal"> <!-- ✅ Added modifier class -->
-  <div class="modal__container modal__container_preview">
-    <button type="button" class="modal__close-btn modal__close-btn_type_preview"></button> <!-- ✅ Removed "X" and added modifier -->
-    <img src="#" alt="" class="modal__preview-image" /> <!-- ✅ src="#" instead of empty string -->
-    <p class="modal__caption"></p>
+  <!-- Preview Modal -->
+  <div class="modal modal_type_preview" id="image-preview-modal">
+    <div class="modal__container modal__container_preview">
+      <button type="button" class="modal__close-btn modal__close-btn_type_preview"></button>
+      <img src="#" alt="" class="modal__preview-image" />
+      <p class="modal__caption"></p>
+    </div>
   </div>
-</div>
 </body>
 </html>

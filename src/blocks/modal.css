@@ -162,7 +162,7 @@
   right: 32px;
   width: 40px;
   height: 40px;
-  background: url('../images/close btn closed.svg') no-repeat center;
+  background: url('../images/close-btn-closed.svg') no-repeat center;
   background-size: contain;
   border: none;
   cursor: pointer;
@@ -188,7 +188,7 @@
   right: -52.5px; /* Adjusted to match Figma desktop preview */
   width: 40px;
   height: 40px;
-  background: url('../images/Close\ Icon.svg') no-repeat center;
+  background: url('../images/close-icon.svg') no-repeat center;
   background-size: contain;
   border: none;
   cursor: pointer;
