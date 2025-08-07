@@ -136,13 +136,18 @@ editProfileButton.addEventListener('click', () => {
 });
 
 newPostButton.addEventListener('click', () => openModal(newPostModal));
+newPostCloseButton.addEventListener('click', () => closeModal(newPostModal));
+previewCloseButton.addEventListener('click', () => closeModal(imagePreviewModal));
 
-// Enable form validation
-enableValidation({
-  formSelector: '.modal__form',
-  inputSelector: '.modal__input',
-  submitButtonSelector: '.modal__submit-btn',
-  inactiveButtonClass: 'modal__submit-btn_disabled',
-  inputErrorClass: 'modal__input_type_error',
-  errorClass: 'modal__input-error_active'
+document.getElementById('edit-profile-form').addEventListener('submit', handleEditProfileSubmit);
+document.getElementById('new-post-form').addEventListener('submit', handleNewPostSubmit);
+
+// Close modal when clicking outside
+document.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('modal_is-opened')) {
+    closeModal(evt.target);
+  }
 });
+
+// Initialize
+renderInitialCards();
