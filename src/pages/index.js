@@ -136,11 +136,6 @@ editProfileButton.addEventListener('click', () => {
 });
 
 newPostButton.addEventListener('click', () => openModal(newPostModal));
-newPostCloseButton.addEventListener('click', () => closeModal(newPostModal));
-previewCloseButton.addEventListener('click', () => closeModal(imagePreviewModal));
-
-document.getElementById('edit-profile-form').addEventListener('submit', handleEditProfileSubmit);
-document.getElementById('new-post-form').addEventListener('submit', handleNewPostSubmit);
 
 // Close modal when clicking outside
 document.addEventListener('click', (evt) => {
@@ -148,6 +143,3 @@ document.addEventListener('click', (evt) => {
     closeModal(evt.target);
   }
 });
-
-// Initialize
-renderInitialCards();
