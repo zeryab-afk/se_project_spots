@@ -3,7 +3,7 @@
 import './index.css';
 import Api from '../utils/Api.js';
 import { setButtonText } from '../utils/helpers.js';
-import { enableValidation } from '../scripts/validation.js';
+import { enableValidation } from '../scripts/validation.js'; // 🔹 FIX — Ensure validation is imported and used
 
 // Image imports
 import logo from '../images/logo.svg';
@@ -11,12 +11,6 @@ import avatar from '../images/avatar.jpg';
 import pencil from '../images/pencil.svg';
 import pencilLight from '../images/pencil-light.svg';
 import plus from '../images/plus.svg';
-import photo1 from '../images/1-photo.jpg';
-import photo2 from '../images/2-photo.jpg';
-import photo3 from '../images/3-photo.jpg';
-import photo4 from '../images/4-photo.jpg';
-import photo5 from '../images/5-photo.jpg';
-import photo6 from '../images/6-photo.jpg';
 
 // DOM Elements
 const profileName = document.querySelector('.profile__name');
@@ -69,7 +63,7 @@ const api = new Api({
   }
 });
 
-// Modals
+// ------------------- Modal Functions -------------------
 function openModal(modal) {
   modal.classList.add('modal_is-opened');
   document.addEventListener('keydown', closeOnEscape);
@@ -97,7 +91,7 @@ document.addEventListener('click', evt => {
   }
 });
 
-// Cancel delete
+// ------------------- Delete Card -------------------
 deleteForm.querySelector('.modal__submit-btn_type_cancel')
   .addEventListener('click', () => {
     selectedCard = null;
@@ -105,7 +99,6 @@ deleteForm.querySelector('.modal__submit-btn_type_cancel')
     closeModal(deleteModal);
   });
 
-// Handle confirmed delete
 function handleDeleteSubmit(e) {
   e.preventDefault();
   const submitButton = e.submitter;
@@ -120,15 +113,14 @@ function handleDeleteSubmit(e) {
       selectedCardId = null;
       closeModal(deleteModal);
     })
-    .catch(err => {
-      console.error('Delete error:', err);
-    })
+    .catch(err => console.error('Delete error:', err))
     .finally(() => {
       setButtonText(submitButton, false, 'Deleting...', 'Yes');
     });
 }
 deleteForm.addEventListener('submit', handleDeleteSubmit);
 
+// ------------------- Create Card -------------------
 function createCard(data) {
   const cardEl = cardTemplate.cloneNode(true);
   const card = cardEl.querySelector('.card');
@@ -146,13 +138,8 @@ function createCard(data) {
   }
 
   likeBtn.addEventListener('click', () => {
-    if (!data._id || data._id.length < 20) {
-      likeBtn.classList.toggle('card__like-btn_active');
-      return;
-    }
-
+    // 🔹 FIX — Removed old _id length check
     const isLiked = likeBtn.classList.contains('card__like-btn_active');
-
     api.changeLikeStatus(data._id, !isLiked)
       .then(updatedCard => {
         if (updatedCard.isLiked) {
@@ -161,9 +148,7 @@ function createCard(data) {
           likeBtn.classList.remove('card__like-btn_active');
         }
       })
-      .catch(err => {
-        console.error('Like/unlike error:', err);
-      });
+      .catch(err => console.error('Like/unlike error:', err));
   });
 
   deleteBtn.addEventListener('click', () => {
@@ -188,12 +173,13 @@ function setUserInfo(user) {
   profileAvatar.src = user.avatar;
 }
 
-// Edit profile form
+// ------------------- Handlers -------------------
 function handleEditProfileSubmit(data, submitButton) {
   setButtonText(submitButton, true, 'Saving...', 'Save');
   api.editUserInfo(data)
     .then(updatedUser => {
       setUserInfo(updatedUser);
+      submitButton.disabled = true; // 🔹 FIX — Disable save button after submit
       closeModal(editProfileModal);
     })
     .catch(err => console.error('Edit profile error:', err))
@@ -202,12 +188,12 @@ function handleEditProfileSubmit(data, submitButton) {
     });
 }
 
-// Update avatar
 function handleEditAvatarSubmit(avatarUrl, submitButton) {
   setButtonText(submitButton, true, 'Saving...', 'Save');
   api.updateUserAvatar(avatarUrl)
     .then(updatedUser => {
       setUserInfo(updatedUser);
+      submitButton.disabled = true; // 🔹 FIX — Disable after submit
       closeModal(editAvatarModal);
     })
     .catch(err => console.error('Edit avatar error:', err))
@@ -216,19 +202,15 @@ function handleEditAvatarSubmit(avatarUrl, submitButton) {
     });
 }
 
-// Initial load
+// ------------------- Initial Load -------------------
 api.getAppInfo()
   .then(([cards, user]) => {
     setUserInfo(user);
-    cards.forEach(card => {
-      cardsList.append(createCard(card));
-    });
+    cards.forEach(card => cardsList.append(createCard(card)));
   })
   .catch(err => console.error('App init error:', err));
 
-// 📝 Form Listeners
-
-// Edit profile
+// ------------------- Form Listeners -------------------
 document.getElementById('edit-profile-form').addEventListener('submit', e => {
   e.preventDefault();
   const submitButton = e.submitter;
@@ -239,7 +221,6 @@ document.getElementById('edit-profile-form').addEventListener('submit', e => {
   handleEditProfileSubmit(updated, submitButton);
 });
 
-// Add new card
 document.getElementById('new-post-form').addEventListener('submit', e => {
   e.preventDefault();
   const submitButton = e.submitter;
@@ -252,6 +233,7 @@ document.getElementById('new-post-form').addEventListener('submit', e => {
   api.addCard(newCard)
     .then(card => {
       cardsList.prepend(createCard(card));
+      submitButton.disabled = true; // 🔹 FIX — Disable after submit
       closeModal(newPostModal);
       e.target.reset();
     })
@@ -261,16 +243,15 @@ document.getElementById('new-post-form').addEventListener('submit', e => {
     });
 });
 
-// Edit avatar
 editAvatarForm.addEventListener('submit', e => {
   e.preventDefault();
   const submitButton = e.submitter;
   const newAvatarUrl = avatarInput.value;
   handleEditAvatarSubmit(newAvatarUrl, submitButton);
-  e.target.reset();
+  // 🔹 FIX — Removed duplicate reset (already handled elsewhere if needed)
 });
 
-// Modal openers
+// ------------------- Modal Openers -------------------
 editProfileButton.addEventListener('click', () => {
   profileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileTitle.textContent;
@@ -284,16 +265,14 @@ avatarEditBtn.addEventListener('click', () => {
   openModal(editAvatarModal);
 });
 
-// Fallback/test cards
-const initialcards = [
-  { name: 'Val Thorens', link: photo1, _id: '1' },
-  { name: 'Restaurant Terrace', link: photo2, _id: '2' },
-  { name: 'Outdoor Cafe', link: photo3, _id: '3' },
-  { name: 'Bridge in Forest', link: photo4, _id: '4' },
-  { name: 'Tunnel Morning Light', link: photo5, _id: '5' },
-  { name: 'Mountain House', link: photo6, _id: '6' }
-];
+// 🔹 FIX — Removed initialcards fallback (data now comes only from server)
 
-initialcards.forEach(card => {
-  cardsList.appendChild(createCard(card));
+// 🔹 FIX — Enable validation globally
+enableValidation({
+  formSelector: '.modal__form',
+  inputSelector: '.modal__input',
+  submitButtonSelector: '.modal__submit-btn',
+  inactiveButtonClass: 'modal__submit-btn_disabled',
+  inputErrorClass: 'modal__input_type_error',
+  errorClass: 'modal__error_visible'
 });

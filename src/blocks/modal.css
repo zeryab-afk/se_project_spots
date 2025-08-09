@@ -34,10 +34,10 @@
   padding: 32px 50px;
   border-radius: 8px;
   width: 100%;
-  max-width: 730px;
+  max-width: 630px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   font-family: 'Poppins', sans-serif;
-  box-sizing: border-box; /* ✅ FIXED: Added as per review */
+  box-sizing: border-box;
 }
 
 /* ✅ Mobile styles */
@@ -57,11 +57,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items removed as per review */
   max-width: none;
   width: unset;
 }
-
 
 /* ========== MODAL TITLE ========== */
 .modal__title {
@@ -171,6 +169,10 @@
   transition: opacity 0.2s ease;
 }
 
+.modal__close-btn:hover {
+  opacity: 0.8;
+}
+
 @media screen and (max-width: 480px) {
   .modal__close-btn {
     top: 16px;
@@ -181,11 +183,10 @@
 }
 
 /* ✅ FIXED: White button for preview */
-/* ========== CLOSE BUTTON (PREVIEW) ========== */
 .modal__close-btn_type_preview {
   position: absolute;
-  top: 0px; /* Adjusted to match Figma desktop preview (top-right corner) */
-  right: -52.5px; /* Adjusted to match Figma desktop preview */
+  top: 0px;
+  right: -52.5px;
   width: 40px;
   height: 40px;
   background: url('../images/close-icon.svg') no-repeat center;
@@ -200,10 +201,30 @@
 @media screen and (max-width: 627px) {
   .modal__close-btn_type_preview {
     top: -48px;
-    right:0px;
+    right: 0px;
     width: 40px;
     height: 40px;
   }
+}
+
+/* ✅ DELETE MODAL CLOSE BUTTON */
+#delete-modal .modal__container .modal__close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  background: url('../images/close-btn-closed.svg') no-repeat center;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 50%;
+  transition: opacity 0.2s ease;
+}
+
+#delete-modal .modal__container .modal__close-btn:hover {
+  opacity: 0.8;
 }
 
 /* ========== IMAGE PREVIEW ========== */
@@ -238,6 +259,87 @@
 
 @media screen and (max-width: 480px) {
   .modal__caption {
-    font-size: 16px; /* ✅ FIXED: Caption font-size for mobile */
+    font-size: 16px;
+  }
+}
+
+/* ========== DELETE MODAL BUTTONS ========== */
+#delete-modal .modal__delete-btn {
+  width: 156px;
+  height: 52px;
+  border-radius: 8px;
+  padding: 18px 32px;
+  gap: 8px;
+  opacity: 1;
+  background-color: #FF6565; /* Updated background color */
+  color: #FCF5E5;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  align-self: flex-start;
+}
+
+#delete-modal .modal__delete-btn:hover {
+  background-color: #e14e4e; /* Slightly darker red on hover */
+}
+
+
+#delete-modal .modal__cancel-btn {
+  width: 156px;
+  height: 52px;
+  background-color: transparent;
+  color: #212121;
+  border: 1px solid #212121;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 18px 32px;
+  gap: 8px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+#delete-modal .modal__cancel-btn:hover {
+  background-color: #f0f0f0;
+}
+
+/* ========== DELETE MODAL BUTTONS CONTAINER FOR SIDE BY SIDE ========== */
+#delete-modal .modal__buttons-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+/* ========== MOBILE STYLES FOR DELETE MODAL ========== */
+@media screen and (max-width: 480px) {
+  #delete-modal .modal__container {
+    width: 300px;
+    height: 208px;
+    top: 214px;
+    left: 10px;
+    border-radius: 8px;
+    gap: 20px;
+    opacity: 1;
+    padding: 12px;
+    position: fixed; /* Added fixed to position top & left */
+  }
+
+  #delete-modal .modal__delete-btn,
+  #delete-modal .modal__cancel-btn {
+    width: 156px;
+    height: 52px;
+    border-radius: 8px;
+    padding-top: 18px;
+    padding-right: 32px;
+    padding-bottom: 18px;
+    padding-left: 32px;
+    gap: 8px;
+    opacity: 1;
+  }
+
+  #delete-modal .modal__cancel-btn {
+    border-width: 1px;
   }
 }
