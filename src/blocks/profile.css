@@ -4,19 +4,77 @@
   position: relative;
 }
 
-.profile__avatar {
-  margin-right: 20px;
+/* ✅ Avatar container wraps avatar & button */
+.profile__avatar-container {
+  position: relative;
   width: 190px;
   height: 190px;
+}
+
+/* ✅ Avatar image */
+.profile__avatar {
+  width: 100%;
+  height: 100%;
   border-radius: 8px;
   object-fit: cover;
 }
 
+/* ✅ Desktop avatar edit button */
+.profile__avatar-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  background: none;
+  color: white;
+  border: none;
+  border-radius: 0 0 8px 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  visibility: hidden;
+  gap: 8px;
+}
+
+
+/* ✅ Show button on hover – desktop */
+.profile__avatar-container:hover .profile__avatar-btn {
+  visibility: visible;
+}
+
+/* ✅ "Edit Avatar" text for desktop – created via CSS */
+.profile__avatar-btn::after {
+  content: "Edit Avatar";
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* ✅ Pencil icon next to text (desktop) */
+.profile__pencil-icon {
+  width: 20px;
+  height: 20px;
+  margin-bottom: 0;
+}
+
+
+/* ✅ Text label inside the button */
+.profile__avatar-text {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Info section */
 .profile__info {
   flex-grow: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
+  margin-left: 20px;
 }
 
 .profile__name {
@@ -63,6 +121,10 @@
   opacity: 0.7;
 }
 
+.profile__edit-btn:hover {
+  opacity: 1;
+}
+
 .profile__add-btn {
   display: flex;
   justify-content: center;
@@ -82,10 +144,6 @@
   color: #fcf5e5;
 }
 
-.profile__edit-btn:hover {
-  opacity: 1;
-}
-
 .profile__add-btn:hover {
   opacity: 0.8;
 }
@@ -95,6 +153,7 @@
   height: 16px;
 }
 
+/* ✅ Mobile styles (unchanged) */
 @media screen and (max-width: 626px) {
   .profile {
     flex-direction: column;
@@ -102,34 +161,76 @@
     padding: 20px 0;
     gap: 16px;
     text-align: center;
+    .profile__avatar-btn::after {
+    content: none;
+  }
+  }
+
+  .profile__avatar-container {
+    width: 80px;
+    height: 80px;
   }
 
   .profile__avatar {
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    height: 100%;
     margin-right: 0;
   }
 
-  .profile__add-btn,
-  .profile__edit-btn {
-    width: 100%;
+  .profile__avatar-btn {
+    width: 23.34px;
+    height: 23.34px;
+    padding: 4px;
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.8);
+
+    top: auto;
+    left: auto;
+    bottom: 4px;
+    right: 4px;
+
+    display: flex;
     justify-content: center;
-    position: static;
-    order: 3;
+    align-items: center;
+
+    visibility: visible;
+  }
+
+  .profile__pencil-icon {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0;
   }
 
   .profile__info {
     align-items: center;
     width: 100%;
+    margin-left: 0;
   }
 
   .profile__name {
-     max-width: 100%;
+    max-width: 100%;
     font-size: 20px;
   }
 
-  /* ✅ FIX: Add space above edit button */
+  .profile__title {
+    font-size: 14px;
+  }
+
   .profile__edit-btn {
     margin-top: 32px;
+    width: 100%;
+    justify-content: center;
+    order: 3;
+  }
+
+  .profile__add-btn {
+    width: 100%;
+    order: 4;
+  }
+
+  /* ❌ Hide text on mobile */
+  .profile__avatar-text {
+    display: none;
   }
 }
