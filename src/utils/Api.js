@@ -1,69 +1,61 @@
 // 📁 api.js
-
 class Api {
   constructor({ baseUrl, headers }) {
     this.baseUrl = baseUrl;
     this.headers = headers;
-
-    // 🔗 Set base endpoint for user info
     this.userInfoUrl = `${this.baseUrl}/users/me`;
   }
 
-  // 📦 Fetch both initial cards and user profile
+  // ✅ Universal request method
+  _request(endpoint, options = {}) {
+    return fetch(`${this.baseUrl}${endpoint}`, {
+      headers: this.headers,
+      ...options
+    }).then(this._handleResponse);
+  }
+
   getAppInfo() {
     return Promise.all([this.getInitialCards(), this.getUserInfo()]);
   }
 
-  // 🖼 Get initial cards
   getInitialCards() {
-    return fetch(`${this.baseUrl}/cards`, {
-      headers: this.headers
-    }).then(this._handleResponse);
+    return this._request('/cards');
   }
 
-  // 👤 Get user profile data
   getUserInfo() {
-    return fetch(this.userInfoUrl, {
-      headers: this.headers
-    }).then(this._handleResponse);
+    return this._request('/users/me');
   }
 
-  // ✏️ Edit user name and about
   editUserInfo({ name, about }) {
-    return fetch(this.userInfoUrl, {
+    return this._request('/users/me', {
       method: 'PATCH',
-      headers: this.headers,
       body: JSON.stringify({ name, about })
-    }).then(this._handleResponse);
+    });
   }
 
-  // 🖼 Update avatar
   updateUserAvatar(avatar) {
-    return fetch(`${this.baseUrl}/users/me/avatar`, {
+    return this._request('/users/me/avatar', {
       method: 'PATCH',
-      headers: this.headers,
       body: JSON.stringify({ avatar })
-    }).then(this._handleResponse);
+    });
   }
 
-  // 🗑 Delete a card by ID
+  addCard({ name, link }) {
+    return this._request('/cards', {
+      method: 'POST',
+      body: JSON.stringify({ name, link })
+    });
+  }
+
   removeCard(cardId) {
-    return fetch(`${this.baseUrl}/cards/${cardId}`, {
-      method: 'DELETE',
-      headers: this.headers
-    }).then(this._handleResponse);
+    return this._request(`/cards/${cardId}`, { method: 'DELETE' });
   }
 
-  // ❤️ Toggle like status (like/unlike)
   changeLikeStatus(cardId, isLiked) {
     const method = isLiked ? 'PUT' : 'DELETE';
-    return fetch(`${this.baseUrl}/cards/${cardId}/likes`, {
-      method,
-      headers: this.headers
-    }).then(this._handleResponse);
+    return this._request(`/cards/${cardId}/likes`, { method });
   }
 
-  // ✅ Reusable response handler
   _handleResponse(res) {
     if (!res.ok) {
       return Promise.reject(`Error: ${res.status}`);
