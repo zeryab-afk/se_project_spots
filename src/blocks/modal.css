@@ -3,10 +3,7 @@
   visibility: hidden;
   opacity: 0;
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
@@ -16,12 +13,10 @@
   transition: visibility 0.3s, opacity 0.3s ease-in;
 }
 
-/* 🔧 Modifier for preview modal */
 .modal_type_preview {
   padding: 0 16px;
 }
 
-/* ========== MODAL VISIBLE STATE ========== */
 .modal_is-opened {
   visibility: visible;
   opacity: 1;
@@ -30,7 +25,7 @@
 /* ========== MODAL CONTAINER ========== */
 .modal__container {
   position: relative;
-  background-color: #ffffff;
+  background-color: #fff;
   padding: 32px 50px;
   border-radius: 8px;
   width: 100%;
@@ -40,7 +35,6 @@
   box-sizing: border-box;
 }
 
-/* ✅ Mobile styles */
 @media screen and (max-width: 480px) {
   .modal__container {
     padding: 24px 20px;
@@ -49,9 +43,8 @@
   }
 }
 
-/* 🔧 Preview container styles */
+/* Transparent container for previews */
 .modal__container_preview {
-  position: relative;
   background: transparent;
   padding: 0;
   display: flex;
@@ -90,7 +83,7 @@
   }
 }
 
-/* ========== LABELS ========== */
+/* ========== LABELS & INPUTS ========== */
 .modal__label {
   display: flex;
   flex-direction: column;
@@ -104,7 +97,6 @@
   }
 }
 
-/* ========== INPUT FIELDS ========== */
 .modal__input {
   margin-top: 8px;
   padding: 12px;
@@ -130,7 +122,7 @@
   width: 156px;
   height: 52px;
   background-color: #212121;
-  color: #FCF5E5;
+  color:#FCF5E5;
   border: none;
   border-radius: 8px;
   font-size: 16px;
@@ -182,10 +174,10 @@
   }
 }
 
-/* ✅ FIXED: White button for preview */
+/* White close button for preview modals */
 .modal__close-btn_type_preview {
   position: absolute;
-  top: 0px;
+  top: 0;
   right: -52.5px;
   width: 40px;
   height: 40px;
@@ -201,30 +193,8 @@
 @media screen and (max-width: 627px) {
   .modal__close-btn_type_preview {
     top: -48px;
-    right: 0px;
-    width: 40px;
-    height: 40px;
+    right: 0;
   }
-}
-
-/* ✅ DELETE MODAL CLOSE BUTTON */
-#delete-modal .modal__container .modal__close-btn {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 40px;
-  height: 40px;
-  background: url('../images/close-btn-closed.svg') no-repeat center;
-  background-size: contain;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  border-radius: 50%;
-  transition: opacity 0.2s ease;
-}
-
-#delete-modal .modal__container .modal__close-btn:hover {
-  opacity: 0.8;
 }
 
 /* ========== IMAGE PREVIEW ========== */
@@ -242,7 +212,7 @@
   }
 }
 
-/* ========== PREVIEW CAPTION ========== */
+/* Preview caption */
 .modal__caption {
   color: white;
   margin-top: 10px;
@@ -253,8 +223,6 @@
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   font-size: 20px;
-  line-height: 100%;
-  letter-spacing: 0%;
 }
 
 @media screen and (max-width: 480px) {
@@ -263,83 +231,94 @@
   }
 }
 
-/* ========== DELETE MODAL BUTTONS ========== */
-#delete-modal .modal__delete-btn {
-  width: 156px;
-  height: 52px;
-  border-radius: 8px;
-  padding: 18px 32px;
-  gap: 8px;
-  opacity: 1;
-  background-color: #FF6565; /* Updated background color */
-  color: #FCF5E5;
-  border: none;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  align-self: flex-start;
+
+/* 🔹 Error message styling */
+.modal__error {
+  color: red; /* Bright red for visibility */
+  font-size: 12px;
 }
 
-#delete-modal .modal__delete-btn:hover {
-  background-color: #e14e4e; /* Slightly darker red on hover */
+/* 🔹 Disabled submit button styling */
+.modal__submit-btn_disabled {
+  background-color: #212121;
+  color: #ccc;
+  cursor: not-allowed;
 }
 
 
-#delete-modal .modal__cancel-btn {
-  width: 156px;
-  height: 52px;
-  background-color: transparent;
-  color: #212121;
-  border: 1px solid #212121;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  padding: 18px 32px;
-  gap: 8px;
-  transition: background 0.3s ease, color 0.3s ease;
+/* ========== DELETE MODAL ========== */
+#delete-modal .modal__title {
+  font-size: 20px;
+  margin-bottom: 24px;
+  text-align: center;
 }
 
-#delete-modal .modal__cancel-btn:hover {
-  background-color: #f0f0f0;
-}
-
-/* ========== DELETE MODAL BUTTONS CONTAINER FOR SIDE BY SIDE ========== */
-#delete-modal .modal__buttons-container {
+#delete-modal .modal__buttons {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 16px;
 }
 
-/* ========== MOBILE STYLES FOR DELETE MODAL ========== */
+#delete-modal .modal__submit-btn {
+  background-color: #FF6565;
+  color: #212121;
+  border: none;
+}
+
+#delete-modal .modal__submit-btn:hover {
+  background-color: #e14e4e;
+}
+
+#delete-modal .modal__submit-btn_type_cancel {
+  background-color: transparent;
+  color: #212121;
+  border: 1px solid #212121;
+}
+
+#delete-modal .modal__submit-btn_type_cancel:hover {
+  background-color: #212121;
+    color: #fff;
+}
+  /* Close button for desktop delete modal */
+  #delete-modal .modal__close-btn {
+     top: 1px;
+    right: -52.5px;
+    width: 40px;
+    height: 40px;
+    background: url('../images/close-icon.png') no-repeat center;
+    background-size: contain;
+  }
+  /* ===== MOBILE VERSION ===== */
 @media screen and (max-width: 480px) {
   #delete-modal .modal__container {
-    width: 300px;
-    height: 208px;
-    top: 214px;
-    left: 10px;
-    border-radius: 8px;
-    gap: 20px;
-    opacity: 1;
-    padding: 12px;
-    position: fixed; /* Added fixed to position top & left */
+    padding: 20px;
+    max-width: 90%;
   }
 
-  #delete-modal .modal__delete-btn,
-  #delete-modal .modal__cancel-btn {
-    width: 156px;
-    height: 52px;
-    border-radius: 8px;
-    padding-top: 18px;
-    padding-right: 32px;
-    padding-bottom: 18px;
-    padding-left: 32px;
-    gap: 8px;
-    opacity: 1;
+  #delete-modal .modal__title {
+    font-size: 18px;
+    margin-bottom: 16px;
   }
 
-  #delete-modal .modal__cancel-btn {
-    border-width: 1px;
+  #delete-modal .modal__buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  #delete-modal .modal__submit-btn,
+  #delete-modal .modal__submit-btn_type_cancel {
+    width: 100%;
+    height: 48px;
+    font-size: 16px;
+  }
+
+  /* Close button outside container for mobile */
+  #delete-modal .modal__close-btn {
+    top: -10px;
+    right: -40px;
+    width: 40px;
+    height: 40px;
+    background: url('../images/close-icon.png') no-repeat center;
+    background-size: contain;
   }
 }
