@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
-    "start": "webpack serve",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "dev": "webpack serve --mode development"
   },
   "repository": {
     "type": "git",
@@ -18,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/zeryab-afk/se_project_spots/issues"
   },
-  "homepage": "https://zeryab-afk.github.io/se_project_spots",
+  "homepage": "https://github.com/zeryab-afk/se_project_spots#readme",
   "devDependencies": {
     "@babel/core": "7.18.9",
     "@babel/preset-env": "7.18.9",
@@ -27,7 +25,6 @@
     "clean-webpack-plugin": "4.0.0",
     "css-loader": "^6.7.1",
     "cssnano": "5.1.12",
-    "gh-pages": "^3.2.3",
     "html-webpack-plugin": "5.5.0",
     "mini-css-extract-plugin": "^2.6.1",
     "postcss-loader": "^7.0.1",
