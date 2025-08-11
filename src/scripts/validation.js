@@ -1,3 +1,5 @@
+// validation.js - Updated with disableButton function and consistent config usage
+
 function showInputError(formEl, inputEl, message, config) {
   const errorEl = formEl.querySelector(`#${inputEl.id}-error`);
   inputEl.classList.add(config.inputErrorClass);
@@ -26,6 +28,12 @@ function toggleButtonState(inputs, button, config) {
   button.disabled = !isValid;
 }
 
+// NEW FUNCTION: Reusable button disabler
+function disableButton(submitButton, config) {
+  submitButton.disabled = true;
+  submitButton.classList.add(config.inactiveButtonClass);
+}
+
 function setEventListeners(formEl, config) {
   const inputs = Array.from(formEl.querySelectorAll(config.inputSelector));
   const button = formEl.querySelector(config.submitButtonSelector);
@@ -47,6 +55,7 @@ function enableValidation(config) {
   });
 }
 
+// UPDATED: Now uses disableButton instead of manual class addition
 function clearValidation(formEl, config) {
   const inputs = Array.from(formEl.querySelectorAll(config.inputSelector));
   const button = formEl.querySelector(config.submitButtonSelector);
@@ -55,8 +64,7 @@ function clearValidation(formEl, config) {
     hideInputError(formEl, inputEl, config);
   });
 
-  button.classList.add(config.inactiveButtonClass);
-  button.disabled = true;
+  disableButton(button, config);
 }
 
-export { enableValidation, clearValidation };
+export { enableValidation, clearValidation, disableButton };
