@@ -1,9 +1,9 @@
-// 📁 index.js
+// index.js - Updated with settings object and consistent disableButton usage
 
 import './index.css';
 import Api from '../utils/Api.js';
 import { setButtonText } from '../utils/helpers.js';
-import { enableValidation } from '../scripts/validation.js'; // 🔹 FIX — Ensure validation is imported and used
+import { enableValidation, disableButton } from '../scripts/validation.js';
 
 // Image imports
 import logo from '../images/logo.svg';
@@ -11,6 +11,16 @@ import avatar from '../images/avatar.jpg';
 import pencil from '../images/pencil.svg';
 import pencilLight from '../images/pencil-light.svg';
 import plus from '../images/plus.svg';
+
+// NEW: Settings object for validation
+const settings = {
+  formSelector: '.modal__form',
+  inputSelector: '.modal__input',
+  submitButtonSelector: '.modal__submit-btn',
+  inactiveButtonClass: 'modal__submit-btn_disabled',
+  inputErrorClass: 'modal__input_type_error',
+  errorClass: 'modal__error_visible'
+};
 
 // DOM Elements
 const profileName = document.querySelector('.profile__name');
@@ -138,7 +148,6 @@ function createCard(data) {
   }
 
   likeBtn.addEventListener('click', () => {
-    // 🔹 FIX — Removed old _id length check
     const isLiked = likeBtn.classList.contains('card__like-btn_active');
     api.changeLikeStatus(data._id, !isLiked)
       .then(updatedCard => {
@@ -179,7 +188,7 @@ function handleEditProfileSubmit(data, submitButton) {
   api.editUserInfo(data)
     .then(updatedUser => {
       setUserInfo(updatedUser);
-      submitButton.disabled = true; // 🔹 FIX — Disable save button after submit
+      disableButton(submitButton, settings); // UPDATED: Using disableButton
       closeModal(editProfileModal);
     })
     .catch(err => console.error('Edit profile error:', err))
@@ -193,7 +202,7 @@ function handleEditAvatarSubmit(avatarUrl, submitButton) {
   api.updateUserAvatar(avatarUrl)
     .then(updatedUser => {
       setUserInfo(updatedUser);
-      submitButton.disabled = true; // 🔹 FIX — Disable after submit
+      disableButton(submitButton, settings); // UPDATED: Using disableButton
       closeModal(editAvatarModal);
     })
     .catch(err => console.error('Edit avatar error:', err))
@@ -233,7 +242,7 @@ document.getElementById('new-post-form').addEventListener('submit', e => {
   api.addCard(newCard)
     .then(card => {
       cardsList.prepend(createCard(card));
-      submitButton.disabled = true; // 🔹 FIX — Disable after submit
+      disableButton(submitButton, settings); // UPDATED: Using disableButton
       closeModal(newPostModal);
       e.target.reset();
     })
@@ -248,7 +257,6 @@ editAvatarForm.addEventListener('submit', e => {
   const submitButton = e.submitter;
   const newAvatarUrl = avatarInput.value;
   handleEditAvatarSubmit(newAvatarUrl, submitButton);
-  // 🔹 FIX — Removed duplicate reset (already handled elsewhere if needed)
 });
 
 // ------------------- Modal Openers -------------------
@@ -265,14 +273,5 @@ avatarEditBtn.addEventListener('click', () => {
   openModal(editAvatarModal);
 });
 
-// 🔹 FIX — Removed initialcards fallback (data now comes only from server)
-
-// 🔹 FIX — Enable validation globally
-enableValidation({
-  formSelector: '.modal__form',
-  inputSelector: '.modal__input',
-  submitButtonSelector: '.modal__submit-btn',
-  inactiveButtonClass: 'modal__submit-btn_disabled',
-  inputErrorClass: 'modal__input_type_error',
-  errorClass: 'modal__error_visible'
-});
+// Enable validation with settings
+enableValidation(settings);
